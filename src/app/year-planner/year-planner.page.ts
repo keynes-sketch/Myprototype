@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {NavController,ModalController,AlertController} from '@ionic/angular';
-import * as moment from 'moment';
+import { CalendarComponent } from 'ionic2-calendar/calendar';
+import { Component, ViewChild, OnInit, Inject, LOCALE_ID} from '@angular/core';
+import {AlertController} from '@ionic/angular';
+import { formatDate } from '@angular/common';
+
 
 @Component({
   selector: 'app-year-planner',
@@ -9,76 +11,112 @@ import * as moment from 'moment';
 })
 export class YearPlannerPage implements OnInit {
 
-  eventSource=[];
-  viewTitle:string;
-  selectedDay = new Date();
+  event = {
+    title: '',
+    desc: '',
+    startTime: '',
+    endTime: '',
+    allDay: false
+  };
 
-  calender ={
-    mode:'month',
-    currentDate: this.selectedDay
-  }
+  minDate = new Date(). toISOString();
 
-  constructor(public navCtrl: NavController, private modalCtrl:ModalController, private alertCtrl :AlertController) { }
+  eventSource = [];
+  viewTitle;
 
-  addEvent(){
+  calendar = {
+    mode: 'month',
+    currentDate: new Date(),
+  };
 
-let modal= this.modalCtrl.create('EventModalPage',{selectedDay: this.selectedDay});
+  @ViewChild(CalendarComponent, {static: true} ) myCal: CalendarComponent;
 
-modal.present();
-modal.onDidDismiss(data => {
+  constructor( private alertCtrl: AlertController,  @Inject(LOCALE_ID) private locale: string) { }
 
-if (data){
-  let eventData = data ;
-
-  eventData.startTime = new Date (data.startTime);
-  eventData.endTime = new Date (data.endTime);
-
-  let events = this.eventSource;
-  events.push(eventData);
-  this.eventSource =[];
-  setTimeout(() => {
-    this.eventSource = events
-
-  });
-  
-}
-
-});
-
-
-
-  }
-
-onViewTitleChanged(title){
-
-this.viewTitle=title;
-
-}
-
-onTimeSelected(ev){
-
-  this.selectedDay = ev.selectedTime;
-
-}
-
-onEventSelected(event){
-
-  let start = moment(event.startTime).format('LLLL');
-  let end = moment(event.endTime).format('LLLL');
-
-  let alert=this.alertCtrl.create({
-
-title: '' + event.title,
-subtitle:'From: ' + start + '<br>  To:' +end,
-buttons:['OK']
-
-
-  });
-
-  alert.present();
-
-}
   ngOnInit() {
+    this.resetEvent();
   }
+
+  resetEvent() {
+    this.event = {
+      title: '',
+      desc: '',
+      startTime: new Date().toISOString(),
+      endTime: new Date().toISOString(),
+      allDay: false
+    };
+  }
+
+  addEvent() {
+    let eventCopy = {
+      title: this.event.title,
+      startTime: new Date(this.event.startTime),
+      endTime: new Date(this.event.endTime),
+      allDay: this.event.allDay,
+      desc: this.event.desc
+
+    }
+
+    if (eventCopy.allDay) {
+      let start = eventCopy.startTime;
+      let end = eventCopy.endTime;
+
+    }
+    this.eventSource.push(eventCopy);
+    this.myCal.loadEvents();
+    this.resetEvent();
+  }
+
+  // change current month/week/day
+  next(){
+    var swiper = document.querySelector('.swiper-container')['swiper'];
+    swiper.slideNext();
+  }
+
+  back(){
+    var swiper = document.querySelector('.swiper-container')['swiper'];
+    swiper.slidePrev();
+  }
+
+  // change between month/week/day
+  changeMode(mode){
+    this.calendar.mode = mode;
+  }
+
+  // focus today
+  today(){
+    this.calendar.currentDate = new Date();
+  }
+
+  // selected date reange and hence title changed
+  onViewTitleChanged(title){
+    this.viewTitle = title;
+  }
+
+  // calendar events was clicked
+  async onEventSelected(event){
+    // use angular date pipe for conversion
+    let start = formatDate(event.startTime, 'medium', this.locale);
+    let end = formatDate(event.endTime, 'medium', this.locale);
+
+    const alert = await this.alertCtrl.create({
+      header: event.title,
+      subHeader : event.desc,
+      message: 'From : ' + start + '<br><br>To: ' + end,
+      buttons: ['OK']
+    });
+    alert.present();
+
+
+  }
+
+  // time slot was clicked
+  onTimeSelected(ev){
+    let selected = new Date(ev.SelectedTime);
+    this.event.startTime = selected.toISOString();
+    selected.setHours(selected.getHours() + 1);
+    this.event.endTime = (selected.toISOString());
+  }
+
 
 }

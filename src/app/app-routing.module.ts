@@ -28,10 +28,6 @@ const routes: Routes = [
     path: 'view-client',
     loadChildren: () => import('./view-client/view-client.module').then( m => m.ViewClientPageModule)
   },
-  {
-    path: 'event-modal',
-    loadChildren: () => import('./event-modal/event-modal.module').then( m => m.EventModalPageModule)
-  },
 ];
 
 @NgModule({
