@@ -28,6 +28,10 @@ const routes: Routes = [
     path: 'view-client',
     loadChildren: () => import('./view-client/view-client.module').then( m => m.ViewClientPageModule)
   },
+  {
+    path: 'splash',
+    loadChildren: () => import('./splash/splash.module').then( m => m.SplashPageModule)
+  },
 ];
 
 @NgModule({
