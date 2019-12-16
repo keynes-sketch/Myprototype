@@ -67,6 +67,20 @@ export class YearPlannerPage implements OnInit {
     this.resetEvent();
   }
 
+  removeEvent() {
+     let eventCopy = {
+      title: this.event.title,
+      startTime: new Date(this.event.startTime),
+      endTime: new Date(this.event.endTime),
+      allDay: this.event.allDay,
+      desc: this.event.desc
+
+    }
+    this.eventSource.pop();
+    this.myCal.loadEvents();
+    this.resetEvent();
+  }
+
   // change current month/week/day
   next(){
     var swiper = document.querySelector('.swiper-container')['swiper'];
@@ -102,7 +116,7 @@ export class YearPlannerPage implements OnInit {
     const alert = await this.alertCtrl.create({
       header: event.title,
       subHeader : event.desc,
-      message: 'From : ' + start + '<br><br>To: ' + end,
+      message: 'From : ' + start + ' <br><br>To: ' + end,
       buttons: ['OK']
     });
     alert.present();

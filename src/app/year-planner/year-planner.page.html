@@ -16,7 +16,7 @@
   <!--Card for adding new event-->
 <ion-card>
   <ion-card-header tappable (click)="collapseCard = !collapseCard">
-  <ion-card-title>New Event</ion-card-title>
+  <ion-card-title> Add New Event</ion-card-title>
   </ion-card-header>
   <ion-card-content *ngIf="!collapseCard">
   
@@ -47,13 +47,13 @@
   <ion-row>
   <!--Change the displayed calendar mode-->
   <ion-col size="4">
-  <ion-button expand="block" shape="round" [color]="calendar.mode == 'month' ? 'primary' : 'secondary' " (click)="changeMode('month')">Month</ion-button>
+  <ion-button expand="block"  [color]="calendar.mode == 'month' ? 'primary' : 'secondary' " (click)="changeMode('month')">Month</ion-button>
   </ion-col>
   <ion-col size="4">
-  <ion-button expand="block" shape="round" [color]="calendar.mode == 'week' ? 'primary' : 'secondary' " (click)="changeMode('week')">Week</ion-button>
+  <ion-button expand="block"  [color]="calendar.mode == 'week' ? 'primary' : 'secondary' " (click)="changeMode('week')">Week</ion-button>
   </ion-col>
   <ion-col size="4">
-  <ion-button expand="block" shape="round" [color]="calendar.mode == 'day' ? 'primary' : 'secondary' " (click)="changeMode('day')">Day</ion-button>
+  <ion-button expand="block"  [color]="calendar.mode == 'day' ? 'primary' : 'secondary' " (click)="changeMode('day')">Day</ion-button>
   </ion-col>
   
   <!--Move back on screen of the slides-->
