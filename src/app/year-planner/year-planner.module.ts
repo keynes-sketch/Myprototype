@@ -10,6 +10,7 @@ import { YearPlannerPage } from './year-planner.page';
 
 import { NgCalendarModule  } from 'ionic2-calendar';
 
+
 @NgModule({
   imports: [
     CommonModule,
