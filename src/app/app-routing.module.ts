@@ -28,11 +28,7 @@ const routes: Routes = [
     path: 'view-client',
     loadChildren: () => import('./view-client/view-client.module').then( m => m.ViewClientPageModule)
   },
-  {
-    path: 'addevent',
-    loadChildren: () => import('./addevent/addevent.module').then( m => m.AddeventPageModule)
-  },
- 
+
 ];
 
 @NgModule({

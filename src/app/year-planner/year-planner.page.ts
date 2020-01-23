@@ -3,12 +3,16 @@ import { Component, OnInit, Inject, LOCALE_ID, ViewChild} from '@angular/core';
 import {AlertController } from '@ionic/angular';
 import { formatDate } from '@angular/common';
 
+
+
 @Component({
   selector: 'app-year-planner',
   templateUrl: './year-planner.page.html',
   styleUrls: ['./year-planner.page.scss'],
 })
+
 export class YearPlannerPage implements OnInit {
+  [x: string]: any;
 
   event = {
     title: '',
@@ -50,17 +54,17 @@ export class YearPlannerPage implements OnInit {
 
   // Create the right event format and reload source
   addEvent() {
-    let eventCopy = {
+    const eventCopy = {
       title: this.event.title,
       startTime:  new Date(this.event.startTime),
       endTime: new Date(this.event.endTime),
       allDay: this.event.allDay,
       desc: this.event.desc
-    }
+    };
  
     if (eventCopy.allDay) {
-      let start = eventCopy.startTime;
-      let end = eventCopy.endTime;
+      const start = eventCopy.startTime;
+      const end = eventCopy.endTime;
  
       eventCopy.startTime = new Date(Date.UTC(start.getUTCFullYear(), start.getUTCMonth(), start.getUTCDate()));
       eventCopy.endTime = new Date(Date.UTC(end.getUTCFullYear(), end.getUTCMonth(), end.getUTCDate() + 1));
@@ -73,12 +77,14 @@ export class YearPlannerPage implements OnInit {
 
   // Change current month/week/day
   next() {
-   var swiper = document.querySelector('.swiper-container')['swiper'];
+   // tslint:disable-next-line: no-string-literal
+   const swiper = document.querySelector('.swiper-container')['swiper'];
    swiper.slideNext();
  }
   
  back() {
-   var swiper = document.querySelector('.swiper-container')['swiper'];
+   // tslint:disable-next-line: no-string-literal
+   const swiper = document.querySelector('.swiper-container')['swiper'];
    swiper.slidePrev();
  }
   
@@ -98,11 +104,12 @@ export class YearPlannerPage implements OnInit {
  }
 
 // Calendar event was clicked
+
 async onEventSelected(event) {
   // Use Angular date pipe for conversion
-  let start = formatDate(event.startTime, 'medium', this.locale);
-  let end = formatDate(event.endTime, 'medium', this.locale);
- 
+  const start = formatDate(event.startTime, 'medium', this.locale) ;
+  const end = formatDate(event.endTime, 'medium', this.locale);
+
   const alert = await this.alertCtrl.create({
     header: event.title,
     subHeader: event.desc,
@@ -114,7 +121,7 @@ async onEventSelected(event) {
  
 // Time slot was clicked
 onTimeSelected(ev) {
-  let selected = new Date(ev.selectedTime);
+  const selected = new Date(ev.selectedTime);
   this.event.startTime = selected.toISOString();
   selected.setHours(selected.getHours() + 1);
   this.event.endTime = (selected.toISOString());

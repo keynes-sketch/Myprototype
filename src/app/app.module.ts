@@ -11,21 +11,25 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { NgCalendarModule  } from 'ionic2-calendar';
-import { AddeventPage } from './addevent/addevent.page';
-import { Calendar } from '@ionic-native/calendar';
-
+import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 
 @NgModule({
-  declarations: [AppComponent, AddeventPage],
-  entryComponents: [AddeventPage],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, NgCalendarModule],
+  declarations: [AppComponent],
+  entryComponents: [],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, NgCalendarModule, FontAwesomeModule],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    Calendar
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+  constructor(library: FaIconLibrary) {
+    // Add an icon to the library for convenient access in other components
+    library.addIcons(faCoffee);
+  }
+}

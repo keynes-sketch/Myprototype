@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { YearPlannerPageRoutingModule } from './year-planner-routing.module';
 
 import { YearPlannerPage } from './year-planner.page';
-
+import { RouterModule } from '@angular/router';
 import { NgCalendarModule  } from 'ionic2-calendar';
 
 
@@ -17,7 +17,13 @@ import { NgCalendarModule  } from 'ionic2-calendar';
     FormsModule,
     IonicModule,
     YearPlannerPageRoutingModule,
-    NgCalendarModule
+    NgCalendarModule,
+    RouterModule.forChild([
+      {
+        path: '',
+        component: YearPlannerPage
+      }
+    ]),
   ],
   declarations: [YearPlannerPage]
 })
