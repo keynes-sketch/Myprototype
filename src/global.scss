@@ -24,3 +24,25 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+
+@font-face {
+    font-family: 'Baskerville Display PT Web';
+    font-style:normal;
+    font-weight: normal;
+    src: url('./assets/fonts/Baskerville Display PT Web.ttf');
+  }
+
+  @font-face {
+    font-family: 'Diaria Sans WOO ';
+    font-style:ExtraBold italic;
+    font-weight: normal;
+    src: url('./assets/fonts/Diaria Sans WOO ExtraBold it.ttf');
+  }
+
+  @font-face {
+    font-family: 'Ionic MT WO4';
+    font-style: italic;
+    font-weight: normal;
+    src: url('./assets/fonts/Ionic MT WO4 italic.ttf');
+  }
