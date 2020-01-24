@@ -28,6 +28,26 @@ const routes: Routes = [
     path: 'view-client',
     loadChildren: () => import('./view-client/view-client.module').then( m => m.ViewClientPageModule)
   },
+  {
+    path: 'adminlogin',
+    loadChildren: () => import('./adminlogin/adminlogin.module').then( m => m.AdminloginPageModule)
+  },
+  {
+    path: 'studentlogin',
+    loadChildren: () => import('./studentlogin/studentlogin.module').then( m => m.StudentloginPageModule)
+  },
+  {
+    path: 'lecturerlogin',
+    loadChildren: () => import('./lecturerlogin/lecturerlogin.module').then( m => m.LecturerloginPageModule)
+  },
+  {
+    path: 'studentsmenu',
+    loadChildren: () => import('./studentsmenu/studentsmenu.module').then( m => m.StudentsmenuPageModule)
+  },
+  {
+    path: 'guestmenu',
+    loadChildren: () => import('./guestmenu/guestmenu.module').then( m => m.GuestmenuPageModule)
+  },
 
 ];
 

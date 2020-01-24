@@ -32,7 +32,7 @@ export class YearPlannerPage implements OnInit {
     currentDate: new Date(),
   };
  
-  @ViewChild(CalendarComponent, { read: 'any', static: false }) myCal: CalendarComponent;
+  @ViewChild(CalendarComponent, { static: false }) myCal: CalendarComponent;
 
   // tslint:disable-next-line: max-line-length
   constructor( private alertCtrl: AlertController, @Inject(LOCALE_ID) private locale: string ) { }
