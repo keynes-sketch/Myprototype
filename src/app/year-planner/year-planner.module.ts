@@ -9,6 +9,7 @@ import { YearPlannerPageRoutingModule } from './year-planner-routing.module';
 import { YearPlannerPage } from './year-planner.page';
 import { RouterModule } from '@angular/router';
 import { NgCalendarModule  } from 'ionic2-calendar';
+import { FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { NgCalendarModule  } from 'ionic2-calendar';
         component: YearPlannerPage
       }
     ]),
+    FontAwesomeModule
   ],
   declarations: [YearPlannerPage]
 })

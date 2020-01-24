@@ -12,7 +12,10 @@ ion-card-title{
   --color:  #fff!important;
 }
 
-
+ion-input{
+  --placeholder-color:#e706d5;
+  --placeholder-opacity: 2;
+}
 
 ion-alert{
   --background:#e706d5 !important;

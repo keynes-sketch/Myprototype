@@ -11,9 +11,15 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { NgCalendarModule  } from 'ionic2-calendar';
-import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {library} from '@fortawesome/fontawesome-svg-core';
+// import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+
+library.add(fas, far, fab);
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,8 +34,4 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(library: FaIconLibrary) {
-    // Add an icon to the library for convenient access in other components
-    library.addIcons(faCoffee);
-  }
 }
