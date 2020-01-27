@@ -1,10 +1,4 @@
-<div id="custom-overlay" [style.display]="splash ? 'flex': 'none'">
-    <div class="flb">
-      <div class="Aligner-item Aligner-item--top"></div>
-      <img src="assets/shapes.svg">
-      <div class="Aligner-item Aligner-item--bottom"></div>
-    </div>
-  </div>
+
 
 <ion-header>
   <ion-toolbar >
@@ -23,18 +17,19 @@
     Administration
   </ion-button>
   
-  <ion-button expand="block"  routerLink="" routerDirection="root">
+  <ion-button expand="block"  routerLink="/studentsmenu" routerDirection="root">
     <fa-icon icon="angle-right" slot="end"></fa-icon> 
     Students
   </ion-button>
   
-  <ion-button expand="block"   routerLink="" routerDirection="root">
+  <ion-button expand="block"   routerLink="/lecturer-menupage" routerDirection="root">
     <fa-icon icon="angle-right" slot="end"></fa-icon> 
     Lecturers
   </ion-button>
-  <ion-button expand="block"  routerLink="" routerDirection="root">
+
+  <ion-button expand="block"  routerLink="/guest-menupage" routerDirection="root">
     <fa-icon icon="angle-right" slot="end"></fa-icon> 
-  GUEST
+    Guest
   </ion-button>
             
 </ion-content>

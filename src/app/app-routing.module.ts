@@ -45,9 +45,22 @@ const routes: Routes = [
     loadChildren: () => import('./studentsmenu/studentsmenu.module').then( m => m.StudentsmenuPageModule)
   },
   {
-    path: 'guestmenu',
-    loadChildren: () => import('./guestmenu/guestmenu.module').then( m => m.GuestmenuPageModule)
+    path: 'guest-menupage',
+    loadChildren: () => import('./guest-menupage/guest-menupage.module').then( m => m.GuestMenupagePageModule)
   },
+  {
+    path: 'lecturer-menupage',
+    loadChildren: () => import('./lecturer-menupage/lecturer-menupage.module').then( m => m.LecturerMenupagePageModule)
+  },
+  {
+    path: 'student-noticeboard',
+    loadChildren: () => import('./student-noticeboard/student-noticeboard.module').then( m => m.StudentNoticeboardPageModule)
+  },
+  {
+    path: 'lecturer-notice-board',
+    loadChildren: () => import('./lecturer-notice-board/lecturer-notice-board.module').then( m => m.LecturerNoticeBoardPageModule)
+  },
+ 
 
 ];
 
