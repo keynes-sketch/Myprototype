@@ -60,6 +60,18 @@ const routes: Routes = [
     path: 'lecturer-notice-board',
     loadChildren: () => import('./lecturer-notice-board/lecturer-notice-board.module').then( m => m.LecturerNoticeBoardPageModule)
   },
+  {
+    path: 'studentregister',
+    loadChildren: () => import('./studentregister/studentregister.module').then( m => m.StudentregisterPageModule)
+  },
+  {
+    path: 'lecturerregister',
+    loadChildren: () => import('./lecturerregister/lecturerregister.module').then( m => m.LecturerregisterPageModule)
+  },
+  {
+    path: 'adminregister',
+    loadChildren: () => import('./adminregister/adminregister.module').then( m => m.ADMINregisterPageModule)
+  },
  
 
 ];
