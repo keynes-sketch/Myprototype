@@ -24,9 +24,11 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AuthenticationService } from './services/authentication.service';
 
 // environment
 import { environment } from '../environments/environment';
+import { ReactiveFormsModule } from '@angular/forms';
 
 library.add(fas, far, fab);
 
@@ -37,10 +39,12 @@ library.add(fas, far, fab);
      AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    AngularFireStorageModule],
+    AngularFireStorageModule,
+    ReactiveFormsModule],
   providers: [
     StatusBar,
     SplashScreen,
+    AuthenticationService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
 
   ],
