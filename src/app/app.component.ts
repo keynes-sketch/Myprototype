@@ -10,6 +10,13 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 
+import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
+
+
+
+import { auth } from 'firebase/app';
+
 
 
 @Component({
@@ -24,15 +31,42 @@ export class AppComponent {
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private router: Router,
+    public afAuth: AngularFireAuth
   ) {
     this.initializeApp();
   }
 
   initializeApp() {
+
     this.platform.ready().then(() => {
+
+      this.afAuth.user.subscribe(user => {
+
+        if (user) {
+
+          this.router.navigate(['/view-client']);
+
+        } else {
+
+          this.router.navigate(['/adminlogin']);
+
+        }
+
+      }, err => {
+
+        this.router.navigate(['/adminlogin']);
+
+      }, () => {
+
+        this.splashScreen.hide();
+
+      });
+
       this.statusBar.styleDefault();
-      this.splashScreen.hide();
+
     });
+
   }
 }

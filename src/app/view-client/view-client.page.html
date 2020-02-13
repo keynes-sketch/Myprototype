@@ -1,9 +1,45 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>viewClient</ion-title>
+    <ion-title>View New Students</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+
+
+  
+  <ion-content *ngIf="items" class="list-mini-content" padding>
+
+    <div *ngIf="items.length > 0" class="list-mini">
+  
+      <ion-list>
+  
+        <ion-item *ngFor="let item of items" [routerLink]="['/editclient', item.payload.doc.id]">
+  
+          <ion-thumbnail slot="start">
+  
+            <ion-item>
+              <fa-icon [icon]="['fas','id-badge']" size="2x"></fa-icon>
+            </ion-item>
+  
+          </ion-thumbnail>
+  
+          <ion-label>{{item.payload.doc.data().title}}</ion-label>
+  
+          <ion-button fill="clear" slot="end">Student Info</ion-button>
+  
+        </ion-item>
+  
+      </ion-list>
+  
+    </div>
+  
+    <div *ngIf="items.length == 0" class="empty-list">
+  
+        Register New Student
+  
+    </div>
+  
+  
+
 
 </ion-content>

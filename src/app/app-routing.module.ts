@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { EditclientResolver } from './editclient/editclient.resolver';
+import { EditclientPageModule } from './editclient/editclient.module';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -72,7 +74,11 @@ const routes: Routes = [
     path: 'adminregister',
     loadChildren: () => import('./adminregister/adminregister.module').then( m => m.ADMINregisterPageModule)
   },
- 
+  {
+    path: 'editclient/:id',
+    loadChildren: () => import('./editclient/editclient.module').then( m => m.EditclientPageModule)
+  },
+
 
 ];
 

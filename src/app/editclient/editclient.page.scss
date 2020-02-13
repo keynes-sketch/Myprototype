@@ -1,4 +1,4 @@
-.create-page {
+.editclient-page {
 
 
 
@@ -8,21 +8,11 @@
   
     .page-content {
   
-      background-color: rgb(238, 12, 181);
+      background-color: rgb(240, 15, 165);
   
   
   
-      .img-avatar {
-  
-        border-radius: 50%;
-  
-        width: 150px;
-  
-        display: block;
-  
-        margin: 20px auto;
-  
-      }
+     
   
   
   
@@ -36,7 +26,7 @@
   
   
   
-      .create-form {
+      .edit-form {
   
         padding: 20px;
   
@@ -51,6 +41,14 @@
   
   
           .submit-button{
+  
+            width: 100%;
+  
+          }
+  
+  
+  
+          .delete-button{
   
             width: 100%;
   

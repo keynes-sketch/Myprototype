@@ -5,27 +5,27 @@
       <ion-back-button defaultHref=""></ion-back-button>
 
     </ion-buttons>
-    <ion-title>Add New Student</ion-title>
+    <ion-title>Update Student Info</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content >
+<ion-content padding>
 
   <div>
 
-    <ion-row no-padding>
+    <ion-row>
 
       <ion-col size="6" offset="3">
 
-        <ion-item>
-          <fa-icon [icon]="['fas','id-badge']" size="5x"></fa-icon>
-        </ion-item>
+       
 
       </ion-col>
 
     </ion-row>
 
-   
+    <ion-item>
+      <fa-icon [icon]="['fas','id-badge']" size="5x"></fa-icon>
+    </ion-item>
 
   </div>
 
@@ -33,7 +33,7 @@
 
     <ion-item>
 
-      <ion-label position="floating" color="primary">Name of Cleint</ion-label>
+      <ion-label position="floating" color="primary">Name of Client</ion-label>
 
       <ion-input type="text" formControlName="name"></ion-input>
 
@@ -56,9 +56,13 @@
 
     </ion-item>
 
-    <ion-button class="submit-btn" expand="block" type="submit" [disabled]="!validations_form.valid">Register New Client</ion-button>
+    <ion-button class="submit-button" expand="block" type="submit" [disabled]="!validations_form.valid">Save</ion-button>
 
   </form>
 
+  <ion-button class="delete-button" expand="block" color="danger" (click)="delete()">Delete</ion-button>
+
+
 
 </ion-content>
+
